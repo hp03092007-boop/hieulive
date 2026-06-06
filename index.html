@@ -1,68 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HIẾU LIVE VIP</title>
+    <title>HIẾU LIVE VIP - DYNAMIC SENS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
-        body { background: #000; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; margin: 0; }
-        .box { border: 2px solid #f00; border-radius: 20px; padding: 25px; background: #111; max-width: 350px; margin: auto; box-shadow: 0 0 15px #f00; }
-        img { border-radius: 50%; border: 2px solid #f00; margin-bottom: 10px; }
-        h2 { color: #f00; text-transform: uppercase; margin-bottom: 20px; }
-        input { padding: 14px; width: 85%; border-radius: 10px; border: 1px solid #444; background: #222; color: #fff; font-size: 16px; margin-bottom: 15px; outline: none; }
-        input:focus { border-color: #f00; }
-        button { padding: 14px; background: #f00; color: #fff; border: none; border-radius: 10px; font-weight: bold; width: 93%; cursor: pointer; text-transform: uppercase; }
+        body { background: #000; color: #fff; font-family: sans-serif; text-align: center; padding: 15px; margin: 0; }
+        .box { border: 2px solid #f00; border-radius: 20px; padding: 20px; background: #111; max-width: 450px; margin: auto; box-shadow: 0 0 20px #f00; }
+        img { border-radius: 50%; border: 2px solid #f00; margin-bottom: 10px; width: 80px; }
+        h2 { color: #f00; text-transform: uppercase; margin: 10px 0; font-size: 18px; }
+        input { padding: 12px; width: 88%; border-radius: 10px; border: 1px solid #444; background: #222; color: #fff; font-size: 15px; margin-bottom: 10px; outline: none; }
+        button { padding: 12px; background: #f00; color: #fff; border: none; border-radius: 10px; font-weight: bold; width: 95%; cursor: pointer; text-transform: uppercase; margin-bottom: 5px; }
         .hidden { display: none; }
-        .result { margin-top: 25px; border-top: 1px solid #333; padding-top: 20px; text-align: left; line-height: 2; }
-        span { color: #f00; font-weight: bold; float: right; }
+        #results { margin-top: 15px; text-align: left; }
+        .card { background: #1a1a1a; border-left: 5px solid #f00; margin-bottom: 15px; padding: 15px; border-radius: 10px; box-shadow: 0 5px 10px rgba(0,0,0,0.5); animation: slideIn 0.3s; }
+        @keyframes slideIn { from {transform: scale(0.9); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+        h3 { color: #f00; margin: 0 0 10px 0; font-size: 15px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        .val { color: #f00; font-weight: bold; float: right; font-family: monospace; font-size: 16px; }
+        .highlight { color: #0f0; } /* Màu xanh cho Nút bắn và DPI cho nổi bật */
+        p { margin: 8px 0; font-size: 13px; color: #ddd; border-bottom: 1px dashed #222; padding-bottom: 4px; }
     </style>
 </head>
 <body>
     <div class="box">
-        <img src="https://imgur.com" width="90">
-        <h2>HIẾU LIVE VIP</h2>
+        <img src="https://imgur.com">
+        <h2>HIẾU LIVE VIP SENS</h2>
 
-        <!-- MÀN HÌNH KHÓA (ĐÃ XÓA HẾT GỢI Ý) -->
         <div id="keyScreen">
-            <input type="password" id="inputKey" placeholder="Nhập mã kích hoạt...">
-            <button onclick="checkKey()">Kích hoạt ngay</button>
-            <!-- Không còn dòng chữ gợi ý ở đây -->
+            <input type="password" id="inputKey" placeholder="Nhập Key kích hoạt VIP...">
+            <button onclick="checkKey()">Kích hoạt App</button>
         </div>
 
-        <!-- MÀN HÌNH CHÍNH -->
         <div id="mainApp" class="hidden">
-            <input type="text" id="phoneName" placeholder="Nhập tên máy lấy độ nhạy...">
-            <button onclick="getSens()">Lấy thông số</button>
-
-            <div id="resultBox" class="result" style="display: none;">
-                <p>Máy: <span id="resDevice"></span></p>
-                <p>Nhìn xung quanh: <span>100</span></p>
-                <p>Red Dot: <span>98</span></p>
-                <p>DPI: <span id="resDPI"></span></p>
-            </div>
+            <input type="text" id="phoneName" placeholder="Nhập tên máy (vdu: iPhone 13)">
+            <button onclick="addSetting()">LẤY ĐỘ NHẠY & NÚT BẮN</button>
+            <button onclick="document.getElementById('results').innerHTML=''" style="background:#444;">XÓA TẤT CẢ</button>
+            <div id="results"></div>
+            <button onclick="localStorage.removeItem('hieulive_logged'); location.reload();" style="background:none; color:#555; font-size:10px; margin-top:20px;">ĐĂNG XUẤT</button>
         </div>
     </div>
 
     <script>
-        // MẬT KHẨU CŨ CỦA BẠN (Viết liền không dấu)
         const SECRET_KEY = "phamhieu99";
+        if(localStorage.getItem("hieulive_logged") === "true") showApp();
 
         function checkKey() {
-            let userKey = document.getElementById("inputKey").value;
-            // Chuyển về chữ thường để tránh lỗi viết hoa đầu dòng
-            if(userKey.toLowerCase() === SECRET_KEY) {
-                document.getElementById("keyScreen").classList.add("hidden");
-                document.getElementById("mainApp").classList.remove("hidden");
-            } else {
-                alert("Mã kích hoạt không đúng!");
-            }
+            if(document.getElementById("inputKey").value.toLowerCase() === SECRET_KEY) {
+                localStorage.setItem("hieulive_logged", "true");
+                showApp();
+            } else { alert("Sai mã!"); }
         }
 
-        function getSens() {
-            let name = document.getElementById("phoneName").value;
-            if(!name) return alert("Chưa nhập tên máy!");
-            document.getElementById("resDevice").innerText = name.toUpperCase();
-            document.getElementById("resDPI").innerText = "585";
-            document.getElementById("resultBox").style.display = "block";
+        function showApp() {
+            document.getElementById("keyScreen").style.display = "none";
+            document.getElementById("mainApp").style.display = "block";
+        }
+
+        // Hàm lấy số ngẫu nhiên trong khoảng
+        function rand(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function addSetting() {
+            let name = document.getElementById("phoneName").value.trim();
+            if(!name) return alert("Hãy nhập tên máy!");
+            
+            let isIphone = name.toLowerCase().includes("iphone");
+            let resultsArea = document.getElementById("results");
+
+            // Cấu tạo bảng thông số ngẫu nhiên liên tục
+            let html = `
+            <div class="card">
+                <h3>THIẾT BỊ: ${name.toUpperCase()}</h3>
+                <p>Nhìn xung quanh <span class="val">${rand(98, 100)}</span></p>
+                <p>Red Dot Sight <span class="val">${rand(95, 99)}</span></p>
+                <p>Ống ngắm 2x <span class="val">${rand(88, 94)}</span></p>
+                <p>Ống ngắm 4x <span class="val">${rand(82, 88)}</span></p>
+                <p>Ống ngắm súng tỉa <span class="val">${rand(50, 65)}</span></p>
+                <p>Nhìn <span class="val">${rand(65, 80)}</span></p>
+                <p><b>NÚT BẮN (SIZE)</b> <span class="val highlight">${isIphone ? rand(42, 48) : rand(48, 55)}%</span></p>
+                <p><b>DPI / ĐỘ RỘNG</b> <span class="val highlight">${isIphone ? "Mặc định" : rand(500, 600)}</span></p>
+                <p><b>TỐC ĐỘ CON TRỎ</b> <span class="val">MAX</span></p>
+                <p><b>LOOT ĐỒ</b> <span class="val">Tự động / Nhanh</span></p>
+            </div>`;
+            
+            resultsArea.innerHTML = html + resultsArea.innerHTML;
+            document.getElementById("phoneName").value = "";
         }
     </script>
 </body>
