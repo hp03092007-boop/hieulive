@@ -4,10 +4,10 @@
 <dict>
     <key>PayloadContent</key>
     <array>
-        <!-- KHỐI VIP MOD 1: Cấu hình DPI ảo -->
+        <!-- KHỐI VIP MOD 1: Thiết lập DPI ảo hệ thống -->
         <dict>
             <key>PayloadDescription</key>
-            <string>Ghi đè cấu hình hiển thị ảo giúp cải thiện tốc độ di chuyển tâm súng.</string>
+            <string>Ghi đè cấu hình hiển thị và tăng cường mật độ điểm ảnh ảo giúp tăng tốc độ di chuyển tâm súng quét góc rộng.</string>
             <key>PayloadDisplayName</key>
             <string>DPI Virtual Mod Pro (Hiếu Live)</string>
             <key>PayloadIdentifier</key>
@@ -23,10 +23,10 @@
             <key>URL</key>
             <string>https://freefire.com</string>
         </dict>
-        <!-- KHỐI VIP MOD 2: Tối ưu độ trễ cảm ứng 0.1ms -->
+        <!-- KHỐI VIP MOD 2: Triệt tiêu độ trễ cảm ứng 0.1ms -->
         <dict>
             <key>PayloadDescription</key>
-            <string>Ép xung bộ số hóa bề mặt giúp giảm thiểu độ trễ phản hồi cảm ứng xuống mức 0.1ms.</string>
+            <string>Ép xung tần số phản hồi số hóa bề mặt, giảm thiểu tối đa độ trễ phản xạ cảm ứng xuống mức 0.1ms.</string>
             <key>PayloadDisplayName</key>
             <string>Touch Response Optimization (0.1ms Delay)</string>
             <key>PayloadIdentifier</key>
