@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Regedit VIP - HIẾU LIVE</title>
+    <title>He Thong Regedit VIP - HIEU LIVE</title>
     <style>
         :root { 
             --primary: #ff4a4a; 
@@ -106,7 +106,7 @@
         
         button:active { transform: scale(0.97); box-shadow: 0 2px 5px rgba(255, 74, 74, 0.2); }
         
-        /* Bộ lọc ẩn hiện các phân đoạn màn hình độc lập */
+        /* He thong an hien cac phan doan man hinh */
         .app-section { display: none !important; }
         .active-section { display: block !important; }
         
@@ -194,7 +194,6 @@
         .btn-install:active { transform: scale(0.97); }
         
         .suggestions { margin-top: 12px; font-size: 12px; color: var(--text-dim); }
-        /* 🛠️ ĐÃ SỬA LỖI ĐỊNH DẠNG CSS TẠI ĐÂY */
         .tag { display: inline-block; background: #1f2330; padding: 6px 10px; border-radius: 8px; margin: 4px 4px 0 0; cursor: pointer; border: 1px solid #2e3440; transition: 0.2s; }
         .tag:hover { border-color: var(--primary); color: #fff; background: rgba(255, 74, 74, 0.1); }
     </style>
@@ -203,47 +202,47 @@
 
 <div class="container">
     <h2>DPI REGEDIT IPHONE</h2>
-    <div class="sub-title">BY HIẾU LIVE</div>
+    <div class="sub-title">BY HIEU LIVE</div>
     
-    <!-- MÀN HÌNH 1: NHẬP KEY -->
+    <!-- MAN HINH 1: NHAP KEY -->
     <div class="app-section active-section" id="keySection">
         <div class="form-group">
-            <label>🔑 Nhập Mã Kích Hoạt (Key VIP HIẾU LIVE - Vĩnh Viễn):</label>
-            <input type="text" id="activationKey" placeholder="MUA KEY IB CHỦ BOX">
-            <button onclick="verifyKey()">XÁC THỰC HỆ THỐNG VIP</button>
+            <label>🔑 Nhap Ma Kich Hoat (Key VIP HIEU LIVE - Vinh Vien):</label>
+            <input type="text" id="activationKey" placeholder="MUA KEY IB CHU BOX">
+            <button onclick="verifyKey()">XAC THUC HE THONG VIP</button>
         </div>
     </div>
 
-    <!-- MÀN HÌNH 2: NHẬP TÊN THIẾT BỊ -->
+    <!-- MAN HINH 2: NHAP TEN THIET BI -->
     <div class="app-section" id="searchSection">
         <div class="form-group">
-            <label>📱 Nhập Tên Dòng Máy iPhone Để Lấy Độ Nhạy:</label>
-            <input type="text" id="deviceInput" placeholder="Ví dụ: iPhone 11, iPhone 15 Pro Max..." autocomplete="off">
+            <label>📱 Nhap Ten Dong May iPhone De Lay Do Nhay:</label>
+            <input type="text" id="deviceInput" placeholder="Vi du: iPhone 11, iPhone 15 Pro Max..." autocomplete="off">
             <div class="suggestions">
-                Gợi ý nhanh: 
+                Goi y nhanh: 
                 <span class="tag" onclick="selectDevice('iPhone 11')">iPhone 11</span>
                 <span class="tag" onclick="selectDevice('iPhone 13 Pro Max')">iPhone 13 Pro Max</span>
                 <span class="tag" onclick="selectDevice('iPhone 15 Pro Max')">iPhone 15 Pro Max</span>
             </div>
-            <button onclick="getSensitivity()">TRA CỨU ĐỘ NHẠY & CẤU HÌNH</button>
+            <button onclick="getSensitivity()">TRA CUU DO NHAY & CAU HINH</button>
         </div>
     </div>
 
-    <!-- MÀN HÌNH 3: HIỂN THỊ KẾT QUẢ ĐỘ NHẠY -->
+    <!-- MAN HINH 3: HIEN THI KET QUA -->
     <div class="app-section" id="resultSection">
         <div class="info-box">
-            <div class="info-title">⚡ Thông Tin Thiết Bị VIP</div>
+            <div class="info-title">⚡ Thong Tin Thiet Bi VIP</div>
             <div class="grid-2">
-                <div class="stat-item"><span>Dòng Máy Kích Hoạt</span><div class="stat-value" id="resModel" style="color: #ffc107;">-</div></div>
-                <div class="stat-item" style="border-left-color: var(--accent);"><span>Thời Hạn Sử Dụng</span><div class="stat-value" style="color: var(--accent);">Vĩnh Viễn</div></div>
+                <div class="stat-item"><span>Dong May Kich Hoat</span><div class="stat-value" id="resModel" style="color: #ffc107;">-</div></div>
+                <div class="stat-item" style="border-left-color: var(--accent);"><span>Thoi Han Su Dung</span><div class="stat-value" style="color: var(--accent);">Vinh Vien</div></div>
             </div>
         </div>
 
         <div class="info-box neon-border">
-            <div class="info-title" style="color: var(--neon-blue);">🎯 Độ Nhạy Kéo Tâm HIẾU LIVE (MAX 200)</div>
+            <div class="info-title" style="color: var(--neon-blue);">🎯 Do Nhay Keo Tam HIEU LIVE (MAX 200)</div>
             <div class="grid-2">
                 <div class="stat-item cyan-tag">
-                    <span>Nhìn Xung Quanh</span>
+                    <span>Nhien Xung Quanh</span>
                     <div class="stat-value" id="valGeneral">0</div>
                     <div class="progress-bar-bg"><div class="progress-bar-fill" id="barGeneral"></div></div>
                 </div>
@@ -253,11 +252,13 @@
                     <div class="progress-bar-bg"><div class="progress-bar-fill" id="barRedDot"></div></div>
                 </div>
                 <div class="stat-item">
-                    <span>Ống Ngắm 2x</span>
+                    <span>Ong Ngam 2x</span>
                     <div class="stat-value" id="val2x">0</div>
                     <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar2x"></div></div>
                 </div>
                 <div class="stat-item">
-                    <span>Ống Ngắm 4x</span>
+                    <span>Ong Ngam 4x</span>
                     <div class="stat-value" id="val4x">0</div>
                     <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar4x"></div></div>
+                </div>
+                <div class="stat-item">
