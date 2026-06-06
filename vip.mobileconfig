@@ -4,6 +4,30 @@
 <dict>
     <key>PayloadContent</key>
     <array>
+        <!-- PHẦN 1: TẠO ICON APP NGOÀI MÀN HÌNH (WEB CLIP) -->
+        <dict>
+            <key>FullScreen</key>
+            <true/>
+            <key>IsRemovable</key>
+            <true/>
+            <key>Label</key>
+            <string>HIẾU LIVE VIP</string>
+            <key>PayloadDescription</key>
+            <string>App lấy độ nhạy Free Fire</string>
+            <key>PayloadDisplayName</key>
+            <string>HIẾU LIVE VIP</string>
+            <key>PayloadIdentifier</key>
+            <string>com.hieulive.app</string>
+            <key>PayloadType</key>
+            <string>com.apple.webClip.managed</string>
+            <key>PayloadUUID</key>
+            <string>D5E6F7G8-H9I0-J1K2-L3M4-N5O6P7Q8R9S0</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>URL</key>
+            <string>https://hp03092007-boop.github.io/hieulive/</string>
+        </dict>
+        <!-- PHẦN 2: TỐI ƯU CẢM ỨNG 0.1MS -->
         <dict>
             <key>PayloadDescription</key>
             <string>Tối ưu cảm ứng 0.1ms</string>
@@ -11,7 +35,8 @@
             <string>Touch 0.1ms</string>
             <key>PayloadIdentifier</key>
             <string>com.hieulive.touch</string>
-            <key>PayloadType</key>            <string>com.apple.accessibility.TouchAccommodations</string>
+            <key>PayloadType</key>
+            <string>com.apple.accessibility.TouchAccommodations</string>
             <key>PayloadUUID</key>
             <string>6D6E77A1-574E-436E-8C45-A6560B08B8F3</string>
             <key>PayloadVersion</key>
@@ -25,9 +50,9 @@
         </dict>
     </array>
     <key>PayloadDescription</key>
-    <string>Hiếu Live - Tối ưu độ nhạy VIP</string>
+    <string>Cài đặt App độ nhạy & Tối ưu cảm ứng</string>
     <key>PayloadDisplayName</key>
-    <string>HIẾU LIVE VIP</string>
+    <string>HIẾU LIVE - SETUP APP</string>
     <key>PayloadIdentifier</key>
     <string>com.hieulive.config</string>
     <key>PayloadOrganization</key>
