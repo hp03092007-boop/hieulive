@@ -14,8 +14,11 @@
         label { display: block; margin-bottom: 10px; color: var(--text-dim); font-size: 14px; }
         input[type="text"] { width: 100%; padding: 14px; border: 2px solid #2e3440; background: #252932; color: white; border-radius: 10px; font-size: 16px; box-sizing: border-box; }
         button { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+        
+        /* Cấu trúc ẩn các màn hình độc lập */
         .app-section { display: none; }
         .active-section { display: block !important; }
+        
         .info-box { background: #252932; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
         .info-title { font-weight: bold; color: var(--primary); margin-bottom: 10px; text-transform: uppercase; font-size: 15px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -43,11 +46,11 @@
         </div>
     </div>
 
-    <!-- MÀN HÌNH 2: NHẬP TÊN MÁY -->
+    <!-- MÀN HÌNH 2: NHẬP TÊN THIẾT BỊ -->
     <div class="app-section" id="searchSection">
         <div class="form-group">
             <label>📱 Nhập Tên Dòng Máy iPhone Để Lấy Độ Nhạy:</label>
-            <input type="text" id="deviceInput" placeholder="Ví dụ: iPhone 11, iPhone 14 Pro Max..." autocomplete="off">
+            <input type="text" id="deviceInput" placeholder="Ví dụ: iPhone 11, iPhone 15 Pro Max..." autocomplete="off">
             <div class="suggestions">
                 Gợi ý nhanh: 
                 <span class="tag" onclick="selectDevice('iPhone 11')">iPhone 11</span>
@@ -58,7 +61,7 @@
         </div>
     </div>
 
-    <!-- MÀN HÌNH 3: HIỂN THỊ KẾT QUẢ -->
+    <!-- MÀN HÌNH 3: HIỂN THỊ KẾT QUẢ ĐỘ NHẠY ĐỔI NGẪU NHIÊN -->
     <div class="app-section" id="resultSection">
         <div class="info-box">
             <div class="info-title">Thông Tin Thiết Bị VIP</div>
@@ -69,18 +72,18 @@
         </div>
 
         <div class="info-box">
-            <div class="info-title">🎯 Độ Nhạy Kéo Tâm HIẾU LIVE</div>
+            <div class="info-title">🎯 Độ Nhạy Kéo Tâm HIẾU LIVE (MAX 200)</div>
             <div class="grid-2">
-                <div class="stat-item"><span>Nhìn Xung Quanh</span><div class="stat-value">100</div></div>
-                <div class="stat-item"><span>Red Dot Sight</span><div class="stat-value">95</div></div>
-                <div class="stat-item"><span>Ống Ngắm 2x</span><div class="stat-value">92</div></div>
-                <div class="stat-item"><span>Ống Ngắm 4x</span><div class="stat-value">88</div></div>
-                <div class="stat-item"><span>Ống Ngắm Súng Ngắm</span><div class="stat-value">50</div></div>
-                <div class="stat-item"><span>Nhìn</span><div class="stat-value">65</div></div>
+                <div class="stat-item"><span>Nhìn Xung Quanh</span><div class="stat-value" id="valGeneral">200</div></div>
+                <div class="stat-item"><span>Red Dot Sight</span><div class="stat-value" id="valRedDot">195</div></div>
+                <div class="stat-item"><span>Ống Ngắm 2x</span><div class="stat-value" id="val2x">185</div></div>
+                <div class="stat-item"><span>Ống Ngắm 4x</span><div class="stat-value" id="val4x">178</div></div>
+                <div class="stat-item"><span>Ống Ngắm Súng Ngắm</span><div class="stat-value" id="valAwm">100</div></div>
+                <div class="stat-item"><span>Nhìn</span><div class="stat-value" id="valLook">130</div></div>
             </div>
             <div class="stat-item" style="margin-top: 10px; background: #1e222b;">
                 <span>Kích Thước Nút Bắn Chuẩn</span>
-                <div class="stat-value" style="color: #ffc107;">45%</div>
+                <div class="stat-value" id="valButton" style="color: #ffc107;">45%</div>
             </div>
         </div>
 
@@ -92,21 +95,23 @@
             </div>
         </div>
 
-        <!-- Liên kết tải file vip.mobileconfig vật lý -->
         <a href="vip.mobileconfig" class="btn-install" onclick="showGuide()">CÀI ĐẶT VIP.MOBILECONFIG VÀO MÁY</a>
         <button onclick="backToSearch()" style="background: #343a40; margin-top: 10px;">TRA CỨU MÁY KHÁC</button>
     </div>
 </div>
 
 <script>
-    // 🔴 Khai báo mã Key kích hoạt duy nhất vĩnh viễn mới
     var CORRECT_KEY = "hieu1";
+
+    // Hàm tạo số ngẫu nhiên trong khoảng từ min đến max
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
     function verifyKey() {
         var inputField = document.getElementById('activationKey');
         if (!inputField) return;
         
-        // Tự động xóa khoảng cách trống dư thừa và chuyển hết về chữ thường chống lỗi gõ nhầm chữ hoa
         var userKey = inputField.value.trim().toLowerCase();
         
         if (userKey === CORRECT_KEY) {
@@ -120,10 +125,30 @@
         document.getElementById('deviceInput').value = name;
     }
 
+    // Hàm phân tích thông số và thực hiện đổi ngẫu nhiên mỗi lần bấm
     function getSensitivity() {
         var inputVal = document.getElementById('deviceInput').value.trim();
         if (inputVal === "") { alert("Vui lòng nhập tên dòng máy!"); return; }
+        
+        // Tiến hành sinh số ngẫu nhiên thuật toán Regedit VIP (Phạm vi cận Max 200)
+        var general = getRandomInt(185, 200);
+        var redDot = getRandomInt(180, 195);
+        var scope2x = getRandomInt(175, 190);
+        var scope4x = getRandomInt(165, 185);
+        var awm = getRandomInt(85, 100);
+        var look = getRandomInt(110, 140);
+        var buttonSize = getRandomInt(40, 46) + "%";
+
+        // Đổ dữ liệu ngẫu nhiên vừa tạo ra giao diện màn hình
         document.getElementById('resModel').innerText = inputVal.toUpperCase();
+        document.getElementById('valGeneral').innerText = general;
+        document.getElementById('valRedDot').innerText = redDot;
+        document.getElementById('val2x').innerText = scope2x;
+        document.getElementById('val4x').innerText = scope4x;
+        document.getElementById('valAwm').innerText = awm;
+        document.getElementById('valLook').innerText = look;
+        document.getElementById('valButton').innerText = buttonSize;
+
         switchSection('searchSection', 'resultSection');
     }
 
