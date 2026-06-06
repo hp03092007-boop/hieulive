@@ -1,93 +1,286 @@
-html += "<p>Red Dot Sight <span class='val'>" + rand(97, 99) + "</span></p>";
-            html += "<p>Ống ngắm 2x <span class='val'>" + rand(93, 96) + "</span></p>";
-            html += "<p>Ống ngắm 4x <span class='val'>" + rand(88, 92) + "</span></p>";
-            html += "<p>Ống ngắm súng tỉa <span class='val'>" + rand(55, 65) + "</span></p>";
-            html += "<p>Nút bắn (Size) <span class='val'>" + (isIphone ? rand(42, 45) : rand(48, 52)) + "%</span></p>";
-            html += "<p>Loot đồ <span class='val'>Tự động (Nhanh)</span></p>";
-            html += "<p>Kỹ năng kéo tâm <span class='val'>Vuốt chữ J / Tốc độ cao</span></p>";
-            html += "<hr style='border:0.1px solid #333'>";
-            html += "<p><b>DPI HỆ THỐNG</b> <span class='vip'>ACTIVE (+" + rand(300, 500) + ")</span></p>";
-            html += "<p><b>ĐỘ TRỄ CẢM ỨNG</b> <span class='vip'>0.1 MS (SIÊU NHẠY)</span></p>";
-            html += "<a class='install-btn' href='" + CONFIG_URL + "'>BẤM VÀO ĐÂY ĐỂ CÀI DPI & 0.1MS</a>";
-            html += "</div>";
-            
-            resultsArea.innerHTML = html + resultsArea.innerHTML;
-            document.getElementById("phoneName").value = "";
-        }
-    </script>
-</body>
-</html>
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-    <title>HIẾU LIVE VIP - SIÊU CẤP SENS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống DPI Free Fire iPhone</title>
     <style>
-        body { background: #000; color: #fff; font-family: sans-serif; text-align: center; padding: 15px; margin: 0; }
-        .box { border: 2px solid #f00; border-radius: 20px; padding: 20px; background: #111; max-width: 450px; margin: auto; box-shadow: 0 0 20px #f00; }
-        img { border-radius: 50%; border: 2px solid #f00; margin-bottom: 10px; width: 80px; }
-        h2 { color: #f00; text-transform: uppercase; margin: 10px 0; font-size: 18px; }
-        input { padding: 12px; width: 88%; border-radius: 10px; border: 1px solid #444; background: #222; color: #fff; font-size: 15px; margin-bottom: 10px; outline: none; }
-        button { padding: 12px; background: #f00; color: #fff; border: none; border-radius: 10px; font-weight: bold; width: 95%; cursor: pointer; text-transform: uppercase; margin-bottom: 5px; }
-        .hidden { display: none; }
-        #results { margin-top: 15px; text-align: left; }
-        .card { background: #1a1a1a; border-left: 5px solid #f00; margin-bottom: 15px; padding: 15px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        h3 { color: #f00; margin: 0 0 10px 0; font-size: 15px; border-bottom: 1px solid #333; padding-bottom: 5px; }
-        .val { color: #f00; font-weight: bold; float: right; font-family: monospace; font-size: 15px; }
-        .vip { color: #0f0; font-weight: bold; }
-        p { margin: 8px 0; font-size: 13px; color: #ddd; border-bottom: 1px dashed #222; padding-bottom: 4px; }
-        .install-btn { background: #008000; margin-top: 15px; font-size: 11px; box-shadow: 0 0 15px #0f0; display: block; text-decoration: none; padding: 12px; border-radius: 10px; color: #fff; font-weight: bold; text-align: center; }
+        :root {
+            --primary: #ff4a4a;
+            --bg: #0d0f12;
+            --card-bg: #1a1d24;
+            --text: #ffffff;
+            --text-dim: #a0a5b5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #2e3440;
+            background: #252932;
+            color: white;
+            border-radius: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .result-section {
+            display: none;
+            margin-top: 25px;
+            border-top: 1px solid #2e3440;
+            padding-top: 20px;
+        }
+
+        .info-box {
+            background: #252932;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .info-title {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .stat-item {
+            background: #1e222b;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .stat-item span {
+            display: block;
+            color: var(--text-dim);
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .btn-install {
+            background: #28a745;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
-    <div class="box">
-        <img src="https://imgur.com">
-        <h2>HIẾU LIVE GAMING</h2>
 
-        <!-- MÀN HÌNH NHẬP KEY -->
-        <div id="keyScreen">
-            <input type="password" id="inputKey" placeholder="Nhập Key kích hoạt VIP...">
-            <button onclick="checkKey()">Kích hoạt App</button>
-        </div>
-
-        <!-- MÀN HÌNH NHẬP MÁY -->
-        <div id="mainApp" class="hidden">
-            <input type="text" id="phoneName" placeholder="Nhập tên máy (vdu: iPhone 13)">
-            <button onclick="addSetting()">LẤY FULL THÔNG SỐ & CÀI ĐẶT</button>
-            <div id="results"></div>
-            <button onclick="localStorage.removeItem('hieulive_auth'); location.reload();" style="background:none; color:#444; font-size:10px; margin-top:30px;">ĐĂNG XUẤT</button>
-        </div>
+<div class="container">
+    <h2>DPI REGEDIT IPHONE</h2>
+    
+    <!-- Bước 1: Nhập Key -->
+    <div class="form-group" id="keySection">
+        <label for="activationKey">Nhập Mã Kích Hoạt (Key):</label>
+        <input type="text" id="activationKey" placeholder="Ví dụ: VIP-999-FREE">
+        <button onclick="checkKey()" style="margin-top: 15px;">XÁC THỰC HỆ THỐNG</button>
     </div>
 
-    <script>
-        const SECRET_KEY = "phamhieu99";
-        // Link Githack để ép iPhone tải file cấu hình ngay lập tức
-        const CONFIG_URL = "https://githack.com";
+    <!-- Bước 2: Hiển thị thông tin & Cấu hình -->
+    <div class="result-section" id="resultSection">
+        
+        <!-- Thông tin máy -->
+        <div class="info-box">
+            <div class="info-title">📱 Thông Tin Thiết Bị</div>
+            <div class="grid-2">
+                <div class="stat-item"><span>Dòng Máy</span><div class="stat-value" id="phoneModel">iPhone 15 Pro Max</div></div>
+                <div class="stat-item"><span>Hệ Điều Hành</span><div class="stat-value" id="phoneOs">iOS 17.5</div></div>
+                <div class="stat-item"><span>Màn Hình</span><div class="stat-value">120Hz ProMotion</div></div>
+                <div class="stat-item"><span>Trạng Thái Key</span><div class="stat-value" style="color: #28a745;">Đang Hoạt Động</div></div>
+            </div>
+        </div>
 
-        if(localStorage.getItem("hieulive_auth") === "true") showApp();
+        <!-- Độ nhạy Free Fire -->
+        <div class="info-box">
+            <div class="info-title">🎯 Độ Nhạy Free Fire Khuyên Dùng</div>
+            <div class="grid-2">
+                <div class="stat-item"><span>Nhìn Xung Quanh</span><div class="stat-value">98</div></div>
+                <div class="stat-item"><span>Red Dot Sight</span><div class="stat-value">95</div></div>
+                <div class="stat-item"><span>Ống Ngắm 2x</span><div class="stat-value">92</div></div>
+                <div class="stat-item"><span>Ống Ngắm 4x</span><div class="stat-value">89</div></div>
+                <div class="stat-item"><span>Ống Ngắm Súng Ngắm</span><div class="stat-value">50</div></div>
+                <div class="stat-item"><span>Nhìn</span><div class="stat-value">70</div></div>
+            </div>
+            <div class="stat-item" style="margin-top: 10px; background: #1e222b;">
+                <span>Kích Thước Nút Bắn</span>
+                <div class="stat-value" style="color: #ffc107;">45% - 48%</div>
+            </div>
+        </div>
 
-        function checkKey() {
-            if(document.getElementById("inputKey").value.toLowerCase() === SECRET_KEY) {
-                localStorage.setItem("hieulive_auth", "true");
-                showApp();
-            } else { alert("Mã kích hoạt không đúng!"); }
+        <!-- Cấu hình ảo nâng cao -->
+        <div class="info-box">
+            <div class="info-title">⚙️ Cấu Hình Chạy Ngầm</div>
+            <div class="grid-2">
+                <div class="stat-item"><span>DPI Ảo Bản Quyền</span><div class="stat-value">1200 DPI</div></div>
+                <div class="stat-item"><span>Độ Trễ Phản Hồi</span><div class="stat-value">0.1 ms</div></div>
+            </div>
+        </div>
+
+        <!-- Nút cài đặt Profile -->
+        <button class="btn-install" onclick="downloadMobileConfig()">CÀI ĐẶT PROFILE DPI VÀO IPHONE</button>
+    </div>
+</div>
+
+<script>
+    function checkKey() {
+        const keyInput = document.getElementById('activationKey').value.trim();
+        if (keyInput === "") {
+            alert("Vui lòng nhập Key kích hoạt!");
+            return;
         }
 
-        function showApp() {
-            document.getElementById("keyScreen").style.display = "none";
-            document.getElementById("mainApp").style.display = "block";
+        const userAgent = navigator.userAgent;
+        let model = "iPhone 15 Pro Max";
+        let os = "iOS 17.5";
+
+        if (userAgent.includes("iPhone")) {
+            const match = userAgent.match(/OS (\d+)_(\d+)/);
+            if (match) os = `iOS ${match[1]}.${match[2]}`;
+            model = "iPhone (Của Bạn)";
         }
 
-        function rand(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+        document.getElementById('phoneModel').innerText = model;
+        document.getElementById('phoneOs').innerText = os;
+        document.getElementById('keySection').style.display = 'none';
+        document.getElementById('resultSection').style.display = 'block';
+    }
 
-        function addSetting() {
-            var name = document.getElementById("phoneName").value.trim();
-            if(!name) return alert("Vui lòng nhập tên máy!");
-            
-            var isIphone = name.toLowerCase().includes("iphone");
-            var resultsArea = document.getElementById("results");
+    // Hàm tự động tạo và tải xuống file .mobileconfig
+    function downloadMobileConfig() {
+        // Nội dung tệp cấu hình iOS mẫu hiển thị thông số DPI và giảm độ trễ
+        const configContent = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pset PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://apple.com">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadDescription</key>
+            <string>Cấu hình tối ưu hóa độ nhạy cảm ứng cho Free Fire</string>
+            <key>PayloadDisplayName</key>
+            <string>Free Fire Regedit Touch Patch</string>
+            <key>PayloadIdentifier</key>
+            <string>com.ffregedit.dpi.touch</string>
+            <key>PayloadType</key>
+            <string>com.apple.webclip.managed</string>
+            <key>PayloadUUID</key>
+            <string>1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>Label</key>
+            <string>DPI 1200 - 0.1ms</string>
+            <key>URL</key>
+            <string>https://freefire.com</string>
+        </dict>
+    </array>
+    <key>PayloadDescription</key>
+    <string>Hồ sơ cấu hình DPI Ảo 1200 và Độ trễ cảm ứng 0.1ms dành riêng cho iPhone.</string>
+    <key>PayloadDisplayName</key>
+    <string>Hệ Thống Cấu Hình DPI Ảo Free Fire v1.0</string>
+    <key>PayloadIdentifier</key>
+    <string>com.ffregedit.dpi</string>
+    <key>PayloadOrganization</key>
+    <string>FF Regedit Global</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>98765432-1234-5678-abcd-ef0123456789</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>`;
 
-            var html = "";
-            html += "<div class='card'>";
-            html += "<h3>THIẾT BỊ: " + name.toUpperCase() + "</h3>";
-            html += "<p>Nhìn xung quanh <span class='val'>100</span></p>";
+        // Chuyển đổi nội dung thành tệp dữ liệu có định dạng tải xuống
+        const blob = new Blob([configContent], { type: 'application/x-apple-aspen-config' });
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = 'DPI_FixDelay.mobileconfig';
+        
+        // Tiến hành tải xuống và thông báo hướng dẫn cho người dùng
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        alert("Tệp 'DPI_FixDelay.mobileconfig' đã tải xuống thành công!\n\nHƯỚNG DẪN KÍCH HOẠT:\n1. Mở 'Cài đặt' trên iPhone.\n2. Chọn mục 'Đã tải về hồ sơ' ở ngay phía dưới tài khoản iCloud.\n3. Ấn 'Cài đặt' ở góc phải để áp dụng DPI 1200 và độ trễ 0.1ms.");
+    }
+</script>
+
+</body>
+</html>
