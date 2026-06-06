@@ -15,8 +15,8 @@
         input[type="text"] { width: 100%; padding: 14px; border: 2px solid #2e3440; background: #252932; color: white; border-radius: 10px; font-size: 16px; box-sizing: border-box; }
         button { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 15px; }
         
-        /* Đảm bảo các phân đoạn màn hình tách biệt độc lập */
-        .app-section { display: none; }
+        /* Chỉ định ẩn tất cả các màn hình, chỉ hiện màn hình nào có class active-section */
+        .app-section { display: none !important; }
         .active-section { display: block !important; }
         
         .info-box { background: #252932; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
@@ -37,7 +37,7 @@
     <h2>DPI REGEDIT IPHONE</h2>
     <div class="sub-title">BY HIẾU LIVE</div>
     
-    <!-- MÀN HÌNH 1: NHẬP KEY (BỊ ẨN SẠCH KHI ĐÚNG KEY) -->
+    <!-- MÀN HÌNH 1: NHẬP KEY -->
     <div class="app-section active-section" id="keySection">
         <div class="form-group">
             <label>🔑 Nhập Mã Kích Hoạt (Key VIP HIẾU LIVE):</label>
@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <!-- MÀN HÌNH 2: NHẬP TÊN THIẾT BỊ (ĐỘC LẬP - KHÔNG TRÙNG LẶP) -->
+    <!-- MÀN HÌNH 2: NHẬP TÊN THIẾT BỊ -->
     <div class="app-section" id="searchSection">
         <div class="form-group">
             <label>📱 Nhập Tên Dòng Máy iPhone Để Lấy Độ Nhạy:</label>
@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <!-- MÀN HÌNH 3: HIỂN THỊ KẾT QUẢ ĐỘ NHẠY MAX 200 -->
+    <!-- MÀN HÌNH 3: HIỂN THỊ KẾT QUẢ ĐỘ NHẠY -->
     <div class="app-section" id="resultSection">
         <div class="info-box">
             <div class="info-title">Thông Tin Thiết Bị VIP</div>
@@ -103,7 +103,6 @@
 <script>
     var CORRECT_KEY = "hieu1";
 
-    // Hàm sinh số ngẫu nhiên trong khoảng chỉ định
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
@@ -115,7 +114,7 @@
         var userKey = inputField.value.trim().toLowerCase();
         
         if (userKey === CORRECT_KEY) {
-            // Ẩn màn hình 1, mở màn hình 2 độc lập hoàn toàn
+            // Chuyển đổi màn hình độc lập
             switchSection('keySection', 'searchSection');
         } else {
             alert("❌ Mã Key HIẾU LIVE không chính xác hoặc đã hết hạn!");
@@ -130,7 +129,6 @@
         var inputVal = document.getElementById('deviceInput').value.trim();
         if (inputVal === "") { alert("Vui lòng nhập tên dòng máy!"); return; }
         
-        // Thuật toán bốc số ngẫu nhiên tiệm cận mốc tối đa 200
         var general = getRandomInt(185, 200);
         var redDot = getRandomInt(180, 195);
         var scope2x = getRandomInt(175, 190);
@@ -139,7 +137,6 @@
         var look = getRandomInt(110, 140);
         var buttonSize = getRandomInt(40, 46) + "%";
 
-        // Đổ dữ liệu động lên màn hình kết quả
         document.getElementById('resModel').innerText = inputVal.toUpperCase();
         document.getElementById('valGeneral').innerText = general;
         document.getElementById('valRedDot').innerText = redDot;
@@ -149,7 +146,6 @@
         document.getElementById('valLook').innerText = look;
         document.getElementById('valButton').innerText = buttonSize;
 
-        // Ẩn màn hình 2, mở màn hình hiển thị kết quả độc lập hoàn toàn
         switchSection('searchSection', 'resultSection');
     }
 
@@ -158,14 +154,13 @@
     }
 
     function switchSection(hideId, showId) {
-        // Ép giao diện cũ ẩn hoàn toàn bằng cách thay đổi thuộc tính CSS display
-        document.getElementById(hideId).style.display = 'none';
-        document.getElementById(showId).style.display = 'block';
+        // Hàm xóa class active và ẩn màn hình cũ hoàn toàn
+        document.getElementById(hideId).classList.remove('active-section');
+        document.getElementById(showId).classList.add('active-section');
     }
 
     function backToSearch() {
         document.getElementById('deviceInput').value = ""; 
-        // Ẩn màn hình kết quả, chỉ hiện duy nhất giao diện nhập thiết bị để tra cứu tiếp
         switchSection('resultSection', 'searchSection'); 
     }
 </script>
