@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hệ Thống Regedit VIP - HIẾU LIVE</title>
     <style>
-        /* Giao diện Dark Mode cơ bản, không có màu sắc sặc sỡ, không hiệu ứng nhấp nháy */
+        /* Giao diện Dark Mode cơ bản, không màu sắc sặc sỡ, không hiệu ứng chạy động */
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
             background-color: #0d0f12; 
@@ -58,7 +58,7 @@
             margin-top: 15px; 
         }
         
-        /* Chế độ ẩn hiện màn hình độc lập, không dùng cấu hình CSS nâng cao */
+        /* Chế độ ẩn hiện màn hình độc lập */
         .app-section { display: none; }
         
         .info-box { background: #252932; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
@@ -81,7 +81,7 @@
     <h2>DPI REGEDIT IPHONE</h2>
     <div class="sub-title">BY HIẾU LIVE</div>
     
-    <!-- MÀN HÌNH 1: NHẬP KEY (Chữ mờ gợi ý chuẩn: MUA KEY IB CHỦ BOX) -->
+    <!-- MÀN HÌNH 1: NHẬP KEY (Gợi ý: MUA KEY IB CHỦ BOX) -->
     <div class="app-section" id="keySection" style="display: block;">
         <div class="form-group">
             <label>🔑 Nhập Mã Kích Hoạt (Key VIP HIẾU LIVE - Vĩnh Viễn):</label>
@@ -156,14 +156,14 @@
         // Nhận giá trị, viết thường hoàn toàn, xóa khoảng cách thừa
         var userKey = inputField.value.trim().toLowerCase();
         
-        // Kiểm tra logic đơn giản nhất: Phải bắt đầu bằng phamhieu
+        // Kiểm tra logic: Phải bắt đầu bằng phamhieu
         if (userKey.indexOf("phamhieu") === 0) {
             var numberPart = userKey.substring(8); // Cắt lấy chuỗi số sau chữ phamhieu
             var keyNum = parseInt(numberPart, 10);
             
             // Nếu đúng là số từ 1 đến 100 và chuỗi ráp lại trùng khớp 100%
             if (!isNaN(keyNum) && keyNum >= 1 && keyNum <= 100 && "phamhieu" + keyNum === userKey) {
-                // Chuyển màn hình bằng cách can thiệp style trực tiếp, chống đơ
+                // Chuyển màn hình độc lập
                 document.getElementById('keySection').style.display = 'none';
                 document.getElementById('searchSection').style.display = 'block';
                 return;
@@ -199,8 +199,8 @@
         document.getElementById('valLook').innerText = look;
         document.getElementById('valButton').innerText = buttonSize;
 
-        // Chuyển sang màn hình kết quả độ nhạy ngẫu nhiên
-        document.getElementById('searchSection').style.style.display = 'none';
+        // 🛠️ ĐÃ SỬA LỖI TẠI ĐÂY (Xóa bỏ chữ .style thừa gây liệt code)
+        document.getElementById('searchSection').style.display = 'none';
         document.getElementById('resultSection').style.display = 'block';
     }
 
@@ -211,3 +211,7 @@
     function backToSearch() {
         document.getElementById('deviceInput').value = ""; 
         document.getElementById('resultSection').style.display = 'none';
+        document.getElementById('searchSection').style.display = 'block';
+    }
+</script>
+</body>
