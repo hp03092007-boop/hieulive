@@ -37,11 +37,11 @@
     <h2>DPI REGEDIT IPHONE</h2>
     <div class="sub-title">BY HIẾU LIVE</div>
     
-    <!-- MÀN HÌNH 1: NHẬP KEY -->
+    <!-- MÀN HÌNH 1: NHẬP KEY (Đã đổi gợi ý viết hoa: MUA KEY IB CHỦ BOX) -->
     <div class="app-section active-section" id="keySection">
         <div class="form-group">
-            <label>🔑 Nhập Mã Kích Hoạt (Key VIP HIẾU LIVE):</label>
-            <input type="text" id="activationKey" placeholder="Nhập mã 'hieu1' để vào hệ thống...">
+            <label>🔑 Nhập Mã Kích Hoạt (Key VIP HIẾU LIVE - Vĩnh Viễn):</label>
+            <input type="text" id="activationKey" placeholder="MUA KEY IB CHỦ BOX">
             <button onclick="verifyKey()">XÁC THỰC HỆ THỐNG VIP</button>
         </div>
     </div>
@@ -101,8 +101,6 @@
 </div>
 
 <script>
-    var CORRECT_KEY = "hieu1";
-
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
@@ -113,11 +111,21 @@
         
         var userKey = inputField.value.trim().toLowerCase();
         
-        if (userKey === CORRECT_KEY) {
-            // Chuyển đổi màn hình độc lập
+        // Hệ thống 100 key: phamhieu1 -> phamhieu100
+        var isValid = false;
+        if (userKey.indexOf("phamhieu") === 0) {
+            var keyNumberStr = userKey.substring(8);
+            var keyNumber = parseInt(keyNumberStr);
+            
+            if (!isNaN(keyNumber) && keyNumber >= 1 && keyNumber <= 100 && "phamhieu" + keyNumber === userKey) {
+                isValid = true;
+            }
+        }
+        
+        if (isValid) {
             switchSection('keySection', 'searchSection');
         } else {
-            alert("❌ Mã Key HIẾU LIVE không chính xác hoặc đã hết hạn!");
+            alert("❌ Mã khóa không chính xác!\nVui lòng nhập lại mã khóa mới.");
         }
     }
 
@@ -154,7 +162,6 @@
     }
 
     function switchSection(hideId, showId) {
-        // Hàm xóa class active và ẩn màn hình cũ hoàn toàn
         document.getElementById(hideId).classList.remove('active-section');
         document.getElementById(showId).classList.add('active-section');
     }
