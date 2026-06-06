@@ -22,7 +22,7 @@
         .stat-item { background: #1e222b; padding: 10px; border-radius: 8px; font-size: 14px; }
         .stat-item span { display: block; color: var(--text-dim); font-size: 11px; margin-bottom: 4px; }
         .stat-value { font-weight: bold; font-size: 16px; }
-        .btn-install { background: var(--accent); display: block; text-align: center; text-decoration: none; color: white; padding: 14px; border-radius: 10px; font-weight: bold; margin-top: 15px; }
+        .btn-install { background: var(--accent); display: block; text-align: center; text-decoration: none; color: white; padding: 14px; border-radius: 10px; font-weight: bold; margin-top: 15px; cursor: pointer; border: none; width: 100%; font-size: 16px; }
         .suggestions { margin-top: 10px; font-size: 12px; color: var(--text-dim); }
         .tag { display: inline-block; background: #252932; padding: 5px 8px; border-radius: 5px; margin: 4px 4px 0 0; cursor: pointer; border: 1px solid #2e3440; }
         .tag:hover { border-color: var(--primary); color: #fff; }
@@ -34,7 +34,7 @@
     <h2>DPI REGEDIT IPHONE</h2>
     <div class="sub-title">BY HIẾU LIVE</div>
     
-    <!-- MÀN HÌNH 1: NHẬP KEY KÍCH HOẠT -->
+    <!-- MÀN HÌNH 1: NHẬP KEY -->
     <div class="app-section active-section" id="keySection">
         <div class="form-group">
             <label>🔑 Nhập Mã Kích Hoạt (Key VIP HIẾU LIVE):</label>
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <!-- MÀN HÌNH 3: HIỂN THỊ KẾT QUẢ ĐỘ NHẠY & NÚT CÀI PROFILE -->
+    <!-- MÀN HÌNH 3: HIỂN THỊ KẾT QUẢ ĐỘ NHẠY -->
     <div class="app-section" id="resultSection">
         <div class="info-box">
             <div class="info-title">Thông Tin Thiết Bị VIP</div>
@@ -92,24 +92,16 @@
             </div>
         </div>
 
-        <!-- Tải file cấu hình vật lý từ hệ thống -->
-        <a href="vip.mobileconfig" class="btn-install" onclick="showGuide()">CÀI ĐẶT VIP.MOBILECONFIG VÀO MÁY</a>
+        <!-- Nút tải file cấu hình tạo tự động -->
+        <button class="btn-install" onclick="downloadConfig()">CÀI ĐẶT VIP.MOBILECONFIG VÀO MÁY</button>
         
-        <!-- Nút bấm quay lại để tra cứu dòng máy khác liên tục -->
         <button onclick="backToSearch()" style="background: #343a40; margin-top: 10px;">TRA CỨU MÁY KHÁC</button>
     </div>
 </div>
 
 <script>
     // Danh sách 6 mã Key kích hoạt hợp lệ
-    const VALID_KEYS = [
-        "hieulivekey1",
-        "hieulivekey2",
-        "hieulivekey3",
-        "hieulivekey4",
-        "hieulivekey5",
-        "hieulivekey6"
-    ];
+    const VALID_KEYS = ["hieulivekey1", "hieulivekey2", "hieulivekey3", "hieulivekey4", "hieulivekey5", "hieulivekey6"];
 
     const databaseSensitivity = {
         "iphone x": { general: 95, redDot: 92, x2: 90, x4: 85, awm: 50, button: "48%", dpi: 900 },
@@ -124,7 +116,10 @@
     };
 
     function verifyKey() {
-        const enteredKey = document.getElementById('activationKey').value.trim().toLowerCase();
+        const keyInput = document.getElementById('activationKey');
+        if (!keyInput) return;
+        
+        const enteredKey = keyInput.value.trim().toLowerCase();
         
         if (VALID_KEYS.includes(enteredKey)) {
             switchSection('keySection', 'searchSection');
@@ -169,8 +164,9 @@
         switchSection('searchSection', 'resultSection');
     }
 
-    function showGuide() {
-        alert("Đang tải tệp cấu hình VIP HIẾU LIVE...\n\nHướng dẫn kích hoạt vào máy:\n1. Mở 'Cài đặt' trên iPhone của bạn.\n2. Chọn mục 'Đã tải về hồ sơ' xuất hiện ngay dưới tài khoản iCloud.\n3. Nhấn 'Cài đặt' ở góc trên cùng bên phải để hoàn tất.");
-    }
+    function downloadConfig() {
+        const modelName = document.getElementById('resModel').innerText;
+        const dpiValue = parseInt(document.getElementById('valDpi').innerText) || 1200;
 
-    function switchSection(hideId, showId) {
+        const configContent = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://apple.com">
